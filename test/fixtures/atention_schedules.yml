@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  branchoffice: one
+  day: MyString
+  hour_init: 2021-05-25 17:37:39
+  hour_end: 2021-05-25 17:37:39
+
+two:
+  branchoffice: two
+  day: MyString
+  hour_init: 2021-05-25 17:37:39
+  hour_end: 2021-05-25 17:37:39
