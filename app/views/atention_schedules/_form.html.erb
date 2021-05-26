@@ -1,0 +1,37 @@
+<%= form_with(model: atention_schedule) do |form| %>
+  <% if atention_schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(atention_schedule.errors.count, "error") %> prohibited this atention_schedule from being saved:</h2>
+
+      <ul>
+        <% atention_schedule.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :branchoffice_id %>
+    <%= form.text_field :branchoffice_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :day %>
+    <%= form.text_field :day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hour_init %>
+    <%= form.time_select :hour_init %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hour_end %>
+    <%= form.time_select :hour_end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

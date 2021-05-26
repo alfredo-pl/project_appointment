@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Atention Schedules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Branchoffice</th>
+      <th>Day</th>
+      <th>Hour init</th>
+      <th>Hour end</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @atention_schedules.each do |atention_schedule| %>
+      <tr>
+        <td><%= atention_schedule.branchoffice_id %></td>
+        <td><%= atention_schedule.day %></td>
+        <td><%= atention_schedule.hour_init %></td>
+        <td><%= atention_schedule.hour_end %></td>
+        <td><%= link_to 'Show', atention_schedule %></td>
+        <td><%= link_to 'Edit', edit_atention_schedule_path(atention_schedule) %></td>
+        <td><%= link_to 'Destroy', atention_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Atention Schedule', new_atention_schedule_path %>

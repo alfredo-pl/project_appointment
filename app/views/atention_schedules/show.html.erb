@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Branchoffice:</strong>
+  <%= @atention_schedule.branchoffice_id %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @atention_schedule.day %>
+</p>
+
+<p>
+  <strong>Hour init:</strong>
+  <%= @atention_schedule.hour_init %>
+</p>
+
+<p>
+  <strong>Hour end:</strong>
+  <%= @atention_schedule.hour_end %>
+</p>
+
+<%= link_to 'Edit', edit_atention_schedule_path(@atention_schedule) %> |
+<%= link_to 'Back', atention_schedules_path %>

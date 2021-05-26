@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :atention_schedules
+  resources :branchoffices
+  resources :businesses
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
