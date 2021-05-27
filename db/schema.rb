@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_213739) do
+ActiveRecord::Schema.define(version: 2021_05_27_234923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "atention_schedules", force: :cascade do |t|
     t.bigint "branchoffice_id", null: false
-    t.string "day"
-    t.time "hour_init"
-    t.time "hour_end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.json "day"
     t.index ["branchoffice_id"], name: "index_atention_schedules_on_branchoffice_id"
   end
 
