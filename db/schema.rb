@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_234923) do
+ActiveRecord::Schema.define(version: 2021_05_28_134919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointment_apps", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "branchoffice_id", null: false
+    t.date "date"
+    t.time "time"
+    t.time "duration"
+    t.string "code"
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["branchoffice_id"], name: "index_appointment_apps_on_branchoffice_id"
+    t.index ["user_id"], name: "index_appointment_apps_on_user_id"
+  end
 
   create_table "atention_schedules", force: :cascade do |t|
     t.bigint "branchoffice_id", null: false
@@ -57,6 +71,8 @@ ActiveRecord::Schema.define(version: 2021_05_27_234923) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "appointment_apps", "branchoffices"
+  add_foreign_key "appointment_apps", "users"
   add_foreign_key "atention_schedules", "branchoffices"
   add_foreign_key "branchoffices", "businesses"
 end

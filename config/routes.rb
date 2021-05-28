@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :appointment_apps
   resources :atention_schedules
   resources :branchoffices
   resources :businesses

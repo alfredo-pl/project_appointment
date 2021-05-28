@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @appointment_app.user_id %>
+</p>
+
+<p>
+  <strong>Branchoffice:</strong>
+  <%= @appointment_app.branchoffice_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @appointment_app.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @appointment_app.time %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @appointment_app.duration %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @appointment_app.code %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @appointment_app.state %>
+</p>
+
+<%= link_to 'Edit', edit_appointment_app_path(@appointment_app) %> |
+<%= link_to 'Back', appointment_apps_path %>
