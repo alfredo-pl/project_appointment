@@ -6,10 +6,12 @@
     <meta name="author" content="Alfredo Alejandro Peña Lopez">
 	  <meta name="description" content="Agenda tu hora en el sitio que deseas">
 	  <meta name="keywords" content="agenda, horas, calendario, cita, atencion, reserva">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -18,5 +20,8 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+<%# 
+    <!-- ==== js ==== 
+     <%= javascript_pack_tag(params[:controller])  %>
   </body>
 </html>
