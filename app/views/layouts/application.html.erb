@@ -20,8 +20,9 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-<%# 
-    <!-- ==== js ==== 
-     <%= javascript_pack_tag(params[:controller])  %>
+
+    <% if @swicht.present? && @swicht == true%>
+      <%= javascript_pack_tag(params[:controller])  %>
+    <%end%>
   </body>
 </html>
