@@ -20,9 +20,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #  super
-  # end
+  def update
+  
+    super
+    redirect_to dashboard_user_index_path
+  end
 
   # DELETE /resource
   # def destroy
