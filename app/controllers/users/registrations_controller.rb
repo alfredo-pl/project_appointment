@@ -21,7 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   # def update
-  #   super
+  #  super
   # end
 
   # DELETE /resource
@@ -50,9 +50,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys:  [:name, :run, :direction, :phone])
   end
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || dashboard_user_index_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
