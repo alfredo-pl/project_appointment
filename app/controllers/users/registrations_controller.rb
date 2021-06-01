@@ -50,8 +50,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys:  [:name, :run, :direction, :phone])
   end
   # The path used after sign up.
-  def after_sign_in_path_for(resource)
-    stored_location_for(resource) || dashboard_user_index_path
+  def after_sign_in_path_for(current_user)
+    dashboard_user_index_path
   end
 
   # The path used after sign up for inactive accounts.
