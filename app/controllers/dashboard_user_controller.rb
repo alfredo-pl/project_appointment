@@ -3,6 +3,7 @@ class DashboardUserController < ApplicationController
   
   def index
     @businesses = Business.all
+    @swicht = true
   end
 
 
@@ -11,5 +12,14 @@ class DashboardUserController < ApplicationController
     render json: @user
   end
 
+  def updateProfile
+   @user = User.find(params["user"]["id"].to_i)
+   @user.name =params["user"]["name"]
+   @user.run =params["user"]["run"]
+   @user.direction =params["user"]["direction"]
+   @user.phone =params["user"]["phone"]
+   @user.save
+   redirect_to dashboard_user_index_path
+  end
 
 end

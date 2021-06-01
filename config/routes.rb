@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'dashboard_user/index'
   get 'userProfile', to: 'dashboard_user#userProfile'
-  
+  post 'updateProfile', to: 'dashboard_user#updateProfile'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'landing/index'
