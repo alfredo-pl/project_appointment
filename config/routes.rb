@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'landing/index'
   resources :appointment_apps
-  resources :atention_schedules
-  resources :branchoffices
-  resources :businesses
+  
+  
+  resources :businesses do
+    resources :branchoffices do
+         resources :atention_schedules
+    end
+  end
 
   get 'business/:id', to: 'businesses#show_user'
   devise_for :users , controllers: {
