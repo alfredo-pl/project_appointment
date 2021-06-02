@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :atention_schedules
   resources :branchoffices
   resources :businesses
+
+  get 'business/:id', to: 'businesses#show_user'
   devise_for :users , controllers: {
     registrations: 'users/registrations'
   }

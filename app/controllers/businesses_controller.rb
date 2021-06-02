@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_action :set_business, only: %i[ show edit update destroy ]
+  before_action :set_business, only: %i[ show edit update destroy show_user]
 
   # GET /businesses or /businesses.json
   def index
@@ -9,7 +9,8 @@ class BusinessesController < ApplicationController
   # GET /businesses/1 or /businesses/1.json
   def show
   end
-
+  def show_user
+  end
   # GET /businesses/new
   def new
     @business = Business.new
