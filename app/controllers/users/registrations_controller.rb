@@ -21,7 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-  
+
     super
     redirect_to dashboard_user__path
   end
