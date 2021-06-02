@@ -7,11 +7,7 @@ class User < ApplicationRecord
   # Instance Methods
 
   def update_user_profile(user_params)
-    self.name = user_params[:name]
-    self.run = user_params[:run]
-    self.direction = user_params[:direction]
-    self.phone = user_params[:phone]
-    self.save
+    self.update(user_params)
 
     # This could be change to something like (try first)
     # self.update(user_params)
