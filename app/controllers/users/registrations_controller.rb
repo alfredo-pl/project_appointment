@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
   
     super
-    redirect_to dashboard_user_index_path
+    redirect_to dashboard_user__path
   end
 
   # DELETE /resource
@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   # The path used after sign up.
   def after_sign_in_path_for(current_user)
-    dashboard_user_index_path
+    dashboard_user_path
   end
 
   # The path used after sign up for inactive accounts.

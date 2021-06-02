@@ -19,7 +19,7 @@ class DashboardUserController < ApplicationController
    @user.direction =params["user"]["direction"]
    @user.phone =params["user"]["phone"]
    @user.save
-   redirect_to dashboard_user_index_path
+   redirect_to dashboard_user_path
   end
 
 end
