@@ -1,20 +1,22 @@
 <%= render 'shared/navbar' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @businesses.each do |business| %>
-      <tr>
-        <td><%= business.name %></td>
-      </tr>
-    <% end %>
+<div class="container">
+<div class="row">
+<div class="col-8">
+<% @businesses.each do |business| %>
+  <div class="card" style="width: 18rem;">
+      <img src="" class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title"><%=business.name%></h5>
+      <%= link_to 'Go', business_path(business), class:"btn btn-primary" %> 
+    </div>
+  </div>
+<%end%>  
+</div>
+<div class="col-4" id="root">
+<div>
+</div>
+    
   </tbody>
 </table>
 
-<div id="root"></div>
