@@ -3,55 +3,65 @@ class BranchofficesController < ApplicationController
 
   # GET /branchoffices or /branchoffices.json
   def index
-    @branchoffices = Branchoffice.all
+    @business = Business.find params[:business_id]
+    @branchoffices = @business.branchoffices
   end
 
   # GET /branchoffices/1 or /branchoffices/1.json
   def show
+    @business = Business.find params[:business_id]
+    @branchoffice = Branchoffice.find(params[:id])
   end
 
   # GET /branchoffices/new
   def new
+    @business = Business.find params[:business_id]
     @branchoffice = Branchoffice.new
   end
 
   # GET /branchoffices/1/edit
   def edit
+    @business = Business.find params[:business_id]
+    @branchoffice = Branchoffice.find(params[:id])
   end
 
   # POST /branchoffices or /branchoffices.json
   def create
+    @business = Business.find params[:business_id]
     @branchoffice = Branchoffice.new(branchoffice_params)
-
+    @branchoffice.business = @business
     respond_to do |format|
       if @branchoffice.save
-        format.html { redirect_to @branchoffice, notice: "Branchoffice was successfully created." }
-        format.json { render :show, status: :created, location: @branchoffice }
+        format.html { redirect_to business_branchoffice_path(@business,@branchoffice), notice: "Branchoffice was successfully created." }
+        
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @branchoffice.errors, status: :unprocessable_entity }
+       
       end
     end
   end
 
   # PATCH/PUT /branchoffices/1 or /branchoffices/1.json
   def update
+    @business = Business.find params[:business_id]
+    @branchoffice = Branchoffice.find params[:id]
     respond_to do |format|
-      if @branchoffice.update(branchoffice_params)
-        format.html { redirect_to @branchoffice, notice: "Branchoffice was successfully updated." }
-        format.json { render :show, status: :ok, location: @branchoffice }
+      if @branchoffice.update(branchoffice_params.merge(business: @business))
+        format.html { redirect_to business_branchoffice_path(@business,@branchoffice), notice: "Branchoffice was successfully updated." }
+        
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @branchoffice.errors, status: :unprocessable_entity }
+       
       end
     end
   end
 
   # DELETE /branchoffices/1 or /branchoffices/1.json
   def destroy
+    @branchoffice = Branchoffice.find params[:id]
     @branchoffice.destroy
     respond_to do |format|
-      format.html { redirect_to branchoffices_url, notice: "Branchoffice was successfully destroyed." }
+      format.html { redirect_to business_branchoffices_url, notice: "Branchoffice was successfully destroyed." }
       format.json { head :no_content }
     end
   end

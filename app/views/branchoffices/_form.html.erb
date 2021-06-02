@@ -1,4 +1,4 @@
-<%= form_with(model: branchoffice) do |form| %>
+<%= form_with(model: [@business,branchoffice]) do |form| %>
   <% if branchoffice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(branchoffice.errors.count, "error") %> prohibited this branchoffice from being saved:</h2>

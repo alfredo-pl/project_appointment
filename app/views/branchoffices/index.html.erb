@@ -20,9 +20,9 @@
         <td><%= branchoffice.code_branchoffice %></td>
         <td><%= branchoffice.city %></td>
         <td><%= branchoffice.address %></td>
-        <td><%= link_to 'Show', branchoffice %></td>
-        <td><%= link_to 'Edit', edit_branchoffice_path(branchoffice) %></td>
-        <td><%= link_to 'Destroy', branchoffice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', business_branchoffice_path(@business, branchoffice) %></td>
+        <td><%= link_to 'Edit', edit_business_branchoffice_path(@business, branchoffice) %></td>
+        <td><%= link_to 'Destroy', business_branchoffice_path(@business, branchoffice), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Branchoffice', new_branchoffice_path %>
+<%= link_to 'New Branchoffice', new_business_branchoffice_path %>
