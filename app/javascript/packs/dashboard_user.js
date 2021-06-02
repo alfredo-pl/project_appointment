@@ -20,7 +20,7 @@ $(document).ready(function () {
        
             
         $.ajax({
-            url: '/updateProfile',
+            url: '/update_profile',
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
         console.log("aqui deberia");
         $.ajax({
-            url: '/userProfile',
+            url: '/user_profile',
             type: 'GET'
         }).done(function (response) {
             console.log(response);
