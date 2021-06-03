@@ -15,5 +15,16 @@
   <%= @business.rut %>
 </p>
 
-<%= link_to 'Edit', edit_business_path(@business) %> |
+<div class="row">
+  <% @branchoffices.each do |branch|%>
+    <div class="col">
+      <div><%= branch.code_branchoffice%></div>
+      <div><%= branch.city%></div>
+      <div><%= branch.address%></div>
+      <%= link_to 'SHOW', business_branchoffice_path(branch) %> |
+    </div>
+  <%end%>
+</div>
+
+<%= link_to 'SHOW', business_branchoffice_path(@business) %> |
 <%= link_to 'Back', :back %>
