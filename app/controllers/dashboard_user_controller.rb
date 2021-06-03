@@ -16,9 +16,9 @@ class DashboardUserController < ApplicationController
   def update_profile
     respond_to do |format|
       if @user.update_user_profile(user_params)
-        format.js
+        format.json { render json: {message: "User updated" , data: "update"}} 
       else
-        format.js
+        format.js 
       end
     end
   end
