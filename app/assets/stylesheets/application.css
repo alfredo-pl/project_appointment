@@ -20,3 +20,7 @@
  *= require owl.carousel.min.css 
  *= require_self
  */
+
+ select{
+     display: block!important;
+ }
