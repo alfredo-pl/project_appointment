@@ -2,8 +2,10 @@ class AtentionSchedulesController < ApplicationController
   before_action :set_atention_schedule, only: %i[ show edit update destroy ]
 
   # GET /atention_schedules or /atention_schedules.json
-  def index
-    @atention_schedules = AtentionSchedule.all
+  def index  
+    @branchoffice = Branchoffice.find params[:branchoffice_id]
+    @atention_schedules = @branchoffice.atention_schedule
+    @days = AtentionSchedule.days_atentions(@atention_schedules.day)
   end
 
   # GET /atention_schedules/1 or /atention_schedules/1.json
