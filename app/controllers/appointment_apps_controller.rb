@@ -13,6 +13,7 @@ class AppointmentAppsController < ApplicationController
   # GET /appointment_apps/new
   def new
     @appointment_app = AppointmentApp.new
+    @code = AppointmentApp.generator_code
   end
 
   # GET /appointment_apps/1/edit
