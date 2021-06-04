@@ -52,7 +52,7 @@ class AppointmentAppsController < ApplicationController
     @appointments_user = AppointmentApp.where(user_id: current_user)
   end
   
-  def cancel
+  def appointment_cancel
     respond_to do |format|
       if @appointment_app.cancel_appointment
         format.html { redirect_to record_user_path, notice: "Your Appointment app was successfully cancelled" }
