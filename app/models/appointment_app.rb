@@ -12,6 +12,11 @@ class AppointmentApp < ApplicationRecord
     direction = Branchoffice.references(:appointment_apps).where(id: branchoffice_id).pluck :address
     direction.first
   end
+    
+  def cancel_appointment
+    self.state = "Cancelled"
+    self.save
+  end
 
   def self.generator_code
     alt =Random.new
