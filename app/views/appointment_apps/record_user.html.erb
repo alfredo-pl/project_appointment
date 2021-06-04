@@ -1,0 +1,35 @@
+<h2>Record User</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Business</th>
+      <th>Direction</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Code</th>
+      <th>State<th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+     
+        
+        <% @appointments_user.each do |appointment|%>
+         <tr>
+          <td><%= appointment.business_appointment%></td>
+          <td><%= appointment.direction_appointment%></td>
+          <td><%= appointment.date.strftime("%m/%d/%Y") %></td>
+          <td><%= appointment.time.strftime("at %I:%M%p") %></td>
+          <td><%= appointment.code%></td>
+          <td><%= appointment.state%></td>
+          </tr>
+      <%end%>
+      
+
+  </tbody>
+</table>
+
+<br>
+

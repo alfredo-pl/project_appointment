@@ -3,7 +3,7 @@ class AppointmentAppsController < ApplicationController
 
   # GET /appointment_apps or /appointment_apps.json
   def index
-    @appointment_apps = AppointmentApp.all
+    @appointment_apps = AppointmentApp.where(user_id: current_user)
   end
 
   # GET /appointment_apps/1 or /appointment_apps/1.json
@@ -46,6 +46,10 @@ class AppointmentAppsController < ApplicationController
         format.json { render json: @appointment_app.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def record_user
+    @appointments_user = AppointmentApp.where(user_id: current_user)
   end
 
   # DELETE /appointment_apps/1 or /appointment_apps/1.json

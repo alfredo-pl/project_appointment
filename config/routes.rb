@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'landing/index'
   resources :appointment_apps
-  
+  get 'record_user', to: 'appointment_apps#record_user'
   
   resources :businesses do
     resources :branchoffices do
