@@ -1,5 +1,5 @@
 class AppointmentAppsController < ApplicationController
-  before_action :set_appointment_app, only: %i[ show edit update destroy cancel]
+  before_action :set_appointment_app, only: %i[ show edit update destroy appointment_cancel]
 
   # GET /appointment_apps or /appointment_apps.json
   def index
@@ -53,6 +53,7 @@ class AppointmentAppsController < ApplicationController
   end
   
   def appointment_cancel
+  
     respond_to do |format|
       if @appointment_app.cancel_appointment
         format.html { redirect_to record_user_path, notice: "Your Appointment app was successfully cancelled" }
