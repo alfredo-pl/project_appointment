@@ -1,6 +1,6 @@
 class AtentionSchedulesController < ApplicationController
   before_action :set_atention_schedule, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_admin! , only: %i[ index edit create new update destroy]
   # GET /atention_schedules or /atention_schedules.json
   def index  
     @branchoffice = Branchoffice.find params[:branchoffice_id]
@@ -14,6 +14,8 @@ class AtentionSchedulesController < ApplicationController
 
   # GET /atention_schedules/new
   def new
+    @business = Business.find params[:business_id]
+    @branchoffice = Branchoffice.find params[:branchoffice_id]
     @atention_schedule = AtentionSchedule.new
   end
 
@@ -23,11 +25,13 @@ class AtentionSchedulesController < ApplicationController
 
   # POST /atention_schedules or /atention_schedules.json
   def create
-    @atention_schedule = AtentionSchedule.new(atention_schedule_params)
+    @business = Business.find params[:business_id]
+    @branchoffice = Branchoffice.find params[:branchoffice_id]
+    @atention_schedule = AtentionSchedule.new(atention_schedule_params.merge(branchoffice: @branchoffice))
 
     respond_to do |format|
       if @atention_schedule.save
-        format.html { redirect_to @atention_schedule, notice: "Atention schedule was successfully created." }
+        format.html { redirect_to business_branchoffice_atention_schedule_path(@business,@branchoffice,@atention_schedule), notice: "Atention schedule was successfully created." }
         format.json { render :show, status: :created, location: @atention_schedule }
       else
         format.html { render :new, status: :unprocessable_entity }
