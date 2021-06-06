@@ -24,7 +24,9 @@
           <td><%= appointment.time.strftime("at %I:%M%p") %></td>
           <td><%= appointment.code%></td>
           <td><%= appointment.state%></td>
-         <td> <%= button_to "Cancel", { action: "appointment_cancel", id: appointment },method: :put, data: { confirm: "you are sure? would you like to cancel the appointment" } %></td>
+          <%if appointment.state != "Cancelled"%>
+            <td> <%= button_to "Cancel", { action: "appointment_cancel", id: appointment },method: :put, data: { confirm: "you are sure? would you like to cancel the appointment" } %></td>
+          <%end%>
           </tr>
       <%end%>
       
