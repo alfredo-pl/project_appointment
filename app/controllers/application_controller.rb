@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
             dashboard_user_path
         end
     end
+
+    def authenticate_admin!
+        unless current_user.present? && current_user.role == 1
+          flash[:alert] = "You are not authorized to enter that section"
+          redirect_to dashboard_user_path
+        end
+      end
 end
