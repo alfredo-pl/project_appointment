@@ -9,12 +9,12 @@
   <strong>Address:</strong>
   <%= @branchoffice.address %>
 </p>
-
 <p>
-
-          <td><%= @atention_schedule.day%></td>
-
+    <strong>Atention Schedule:</strong>
+  <%= @atention_schedules.day %>
+  
 </p>
+<%= link_to 'Atention schedule', new_business_branchoffice_atention_schedule_path( branchoffice_id: @branchoffice) %>
 
 <%= link_to 'New Appointment App', new_appointment_app_path(branchoffice_id: @branchoffice.id) %>
 <%= link_to 'Edit', edit_business_branchoffice_path(@branchoffice) %> |
