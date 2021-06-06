@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'business/:id', to: 'businesses#show_user'
+  get 'dashboard_business', to: 'businesses#dashboard_business'
   devise_for :users , controllers: {
     registrations: 'users/registrations'
   }
