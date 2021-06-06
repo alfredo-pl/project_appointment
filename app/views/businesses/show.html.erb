@@ -21,10 +21,10 @@
       <div><%= branch.code_branchoffice%></div>
       <div><%= branch.city%></div>
       <div><%= branch.address%></div>
-      <%= link_to 'SHOW', business_branchoffice_path(branch) %> |
+      <%= link_to 'SHOW', business_branchoffice_path(@business, branch) %> |
     </div>
   <%end%>
 </div>
 
-
+<%= link_to 'New Branchoffice', new_business_branchoffice_path(@business)%>
 <%= link_to 'Back', dashboard_user_path %>

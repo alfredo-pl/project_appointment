@@ -1,16 +1,21 @@
 class BusinessesController < ApplicationController
-  before_action :set_business, only: %i[ show edit update destroy show_user]
-
+  before_action :set_business, only: %i[ show edit update destroy]
+  before_action :authenticate_admin! , only: %i[ index edit create new update destroy]
   # GET /businesses or /businesses.json
   def index
-    @businesses = Business.all
+    if current_user.role == 1
+      @businesses = Business.where( user_id: current_user)
+    else
+      @businesses = Business.all
+    end
   end
 
   # GET /businesses/1 or /businesses/1.json
   def show
     @branchoffices = @business.branchoffices
   end
-  def show_user
+
+  def dashboard_business
   end
   # GET /businesses/new
   def new
@@ -23,8 +28,8 @@ class BusinessesController < ApplicationController
 
   # POST /businesses or /businesses.json
   def create
-    @business = Business.new(business_params)
-
+    @business = Business.new(business_params.merge(user: current_user))
+  
     respond_to do |format|
       if @business.save
         format.html { redirect_to @business, notice: "Business was successfully created." }
