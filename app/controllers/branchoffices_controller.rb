@@ -1,6 +1,6 @@
 class BranchofficesController < ApplicationController
   before_action :set_branchoffice, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_admin! , only: %i[ index edit create new update destroy]
   # GET /branchoffices or /branchoffices.json
   def index
     @business = Business.find params[:business_id]
@@ -9,8 +9,9 @@ class BranchofficesController < ApplicationController
 
   # GET /branchoffices/1 or /branchoffices/1.json
   def show
-    @branchoffice = Branchoffice.find(params[:id])
-    @atention_schedule = @branchoffice.atention_schedule
+    @atention_schedules = @branchoffice.atention_schedule
+    @atention_schedule = AtentionSchedule.new
+
     @appointment_app = AppointmentApp.new
   end
 
@@ -29,8 +30,8 @@ class BranchofficesController < ApplicationController
   # POST /branchoffices or /branchoffices.json
   def create
     @business = Business.find params[:business_id]
-    @branchoffice = Branchoffice.new(branchoffice_params)
-    @branchoffice.business = @business
+    @branchoffice = Branchoffice.new(branchoffice_params.merge(business: @business))
+
     respond_to do |format|
       if @branchoffice.save
         format.html { redirect_to business_branchoffice_path(@business,@branchoffice), notice: "Branchoffice was successfully created." }
