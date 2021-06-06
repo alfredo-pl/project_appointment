@@ -1,6 +1,6 @@
 class AppointmentAppsController < ApplicationController
   before_action :set_appointment_app, only: %i[ show edit update destroy appointment_cancel]
-
+  before_action :authenticate_admin! , only: %i[ index edit update destroy]
   # GET /appointment_apps or /appointment_apps.json
   def index
     @appointment_apps = AppointmentApp.where(user_id: current_user)
