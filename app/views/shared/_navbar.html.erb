@@ -4,11 +4,25 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav3" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <% if current_user %>
+        <% if current_user && current_user.role == 1%>
             <div class="collapse navbar-collapse" id="nav3">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link scroll-to" href="#businesses">Business</a></li>
-                  <li class="w-100"> <%=link_to 'Records ', record_user_path, class:"nav-link scroll-to"%></li>
+                <li class="w-100"><%=link_to 'Dashboard ', dashboard_business_path, class:"nav-link scroll-to"%></li>
+                <li class="w-100"><%=link_to 'Business ', businesses_path, class:"nav-link scroll-to"%></li>
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="perfil"><%= current_user.email%></a>
+                    <ul class="dropdown-menu" aria-labelledby="wnav-drop1">
+                        <li class="w-100"><a class="dropdown-item profile">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="w-100"> <%=link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class:"dropdown-item"%></li>
+                    </ul>
+                </li>
+            </ul>
+        <% elsif current_user && current_user.role == 0 %>
+         <div class="collapse navbar-collapse" id="nav3">
+            <ul class="navbar-nav ml-auto">
+                <li class="w-100"><%=link_to 'Business ', businesses_path, class:"nav-link scroll-to"%></li>
+                <li class="w-100"><%=link_to 'Records ', record_user_path, class:"nav-link scroll-to"%></li>
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="perfil"><%= current_user.email%></a>
                     <ul class="dropdown-menu" aria-labelledby="wnav-drop1">
@@ -18,11 +32,7 @@
                         <li class="w-100"> <%=link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class:"dropdown-item"%></li>
                     </ul>
                 </li>
-             
             </ul>
-              
-          
-
           <%else%>
            <div class="collapse navbar-collapse" id="nav3">
             <ul class="navbar-nav ml-auto">
@@ -41,3 +51,5 @@
         </div>
     </div>
 </nav>
+
+      
