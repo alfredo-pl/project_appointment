@@ -28,4 +28,29 @@ class AppointmentApp < ApplicationRecord
     end
     code.join().to_i
   end
+
+
+  # method return json to calendar
+
+  def self.events_calendar(branchoffice_id)
+    
+    appointments = AppointmentApp.where(branchoffice_id: branchoffice_id, state: "Timetable")
+    app = appointments.map{|event| info ={
+      "id" => event.id,
+      "start" => build_time(event.date, event.time),
+      "title" => event.time.strftime("at %I:%M%p") +" "+ event.user_id.to_s
+    }} 
+    
+  end
+
+  # build datetime
+
+  def self.build_time(date, time)
+   y = date.strftime("%Y").to_i
+   mo = date.strftime("%_m").to_i
+   d = date.strftime("%e").to_i
+   h = time.strftime("%H").to_i
+   m = time.strftime("%M").to_i
+    time_format = Time.new(y,mo,d,h,m)
+  end
 end
