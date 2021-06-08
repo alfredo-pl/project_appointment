@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'landing/index'
   resources :appointment_apps
   get 'record_user', to: 'appointment_apps#record_user'
+  get 'appointments_branchoffices/:id', to: 'branchoffices#appointments_branchoffices'
   put 'appointment_cancel', to: 'appointment_apps#appointment_cancel'
   resources :businesses do
     resources :branchoffices do
