@@ -24,3 +24,7 @@
  select{
      display: block!important;
  }
+
+ .modal{
+    background-color:transparent!important;
+}
