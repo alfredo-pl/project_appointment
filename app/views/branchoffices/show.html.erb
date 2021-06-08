@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<p id="branch_id"><%= @branchoffice.id %></p>
 <p>
   <strong>City:</strong>
   <%= @branchoffice.city %>
@@ -11,9 +12,13 @@
 </p>
 <p>
     <strong>Atention Schedule:</strong>
-  <%= @atention_schedules.day %>
+ 
   
 </p>
+
+<div id="add_event"></div>
+ <div id='calendar'></div>
+
 <%= link_to 'Atention schedule', new_business_branchoffice_atention_schedule_path( branchoffice_id: @branchoffice) %>
 
 <%= link_to 'New Appointment App', new_appointment_app_path(branchoffice_id: @branchoffice.id) %>
