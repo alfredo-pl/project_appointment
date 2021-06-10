@@ -13,15 +13,19 @@ function eventCalendar() {
  
     var calendarEl = document.getElementById('calendar');
     var id = $("#branch_id").text();
-    if (id){
-    var calendar = new Calendar(calendarEl, {
+    if(id){
+ 
+        var calendar = new Calendar(calendarEl, {
         plugins: [ interactionPlugin, dayGridPlugin ],
         initialView: 'dayGridMonth',
         selectable: true,
         dateClick: function(info) {
-            $("#add_event").append(modalAppointment(info));
             $('.modal').modal('show');
-            console.log(info);
+            getAvailableSlots(id,info.dateStr);
+            console.log(info.dateStr);
+
+           
+
         /*     alert('Clicked on: ' + info.dateStr);
             alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
             alert('Current view: ' + info.view.type);
@@ -34,31 +38,39 @@ function eventCalendar() {
     });
     calendar.setOption('locale', 'es');
     calendar.render();
-  }
-};
+    }
+ };
 
-const modalAppointment = (date)=>{
-    var modal = `<div class="modal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Appointment to ${date.dateStr}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Select to hours</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>`;
-    return modal;
+    const getAvailableSlots = (id,date) =>{
+      // traer o buscar los slots disponible en rails
+      //crear un metodo available slot en el controlador y en l modelo
+      //crear la ruta get 
+      //parametro de date y retunr displonible (horas)
+      $.ajax({
+        url:`/available_slots/${id}/${date}`,
+        type: 'GET'
+    }).done(function (response) {
+      console.log(response[0]);
+        response[0].forEach(function(slot) {
+         var date_start = new Date(slot.start_time)
+         var date_end = new Date(slot.end_time)
+         var hours_start = date_start.getHours();
+         var hours_end = date_end.getHours();
+         
+          $(".modal-body .row").append(`<div class="col-6"><button class="btn">${hours_start}hrs - ${hours_end}hrs</button></div>`);
+
+        })
+    }).fail(function (error) {
+        console.error(error);
+    });
     }
 
-    $('#add_event').on('click', '.modal button', function() {
-        $(".modal").remove();
+    
+    $('#add-event').on('click', '.modal button[data-bs-dismiss="modal"]', function() {
+      $(".modal-body .row").empty();
     });
-$(document).on('turbolinks:load', eventCalendar);
+/* $(document).on('turbolinks:load', eventCalendar); */
+$(document).ready(function(){
+  eventCalendar();
+
+})
