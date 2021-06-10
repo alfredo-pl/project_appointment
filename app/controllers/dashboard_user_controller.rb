@@ -4,7 +4,6 @@ class DashboardUserController < ApplicationController
 
   def index
     @businesses = Business.all
-    @swicht = true
   end
 
 

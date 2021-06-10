@@ -9,7 +9,6 @@ class BranchofficesController < ApplicationController
 
   # GET /branchoffices/1 or /branchoffices/1.json
   def show
-    @switch = true
     @atention_schedules = @branchoffice.atention_schedule
     @atention_schedule = AtentionSchedule.new
     @appointment_app = AppointmentApp.new

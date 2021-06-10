@@ -21,8 +21,6 @@
     <p class="alert"><%= alert %></p>
     <%= yield %>
 
-    <% if @switch.present? && @switch == true%>
-      <%= javascript_pack_tag(params[:controller])  %>
-    <%end%>
+ 
   </body>
 </html>
