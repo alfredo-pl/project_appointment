@@ -14,9 +14,16 @@ class BranchofficesController < ApplicationController
     @atention_schedule = AtentionSchedule.new
     @appointment_app = AppointmentApp.new
   end
+
+
   def appointments_branchoffices
     @appointments = AppointmentApp.events_calendar(params[:id])
     render json:  @appointments
+  end
+
+  def available_slots
+    @slots = AppointmentApp.slots_hours_avaible(params[:id],params[:date])
+    render json: @slots
   end
   # GET /branchoffices/new
   def new
