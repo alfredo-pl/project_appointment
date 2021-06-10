@@ -53,4 +53,72 @@ class AppointmentApp < ApplicationRecord
    m = time.strftime("%M").to_i
     time_format = Time.new(y,mo,d,h,m)
   end
+
+
+   # method return json to slots hours avaible
+
+  def self.slots_hours_avaible(id,date)
+    slots = AppointmentApp.where(branchoffices: id, date: date , state: "Timetable")
+    hours = {"available_slots": [[
+      {
+        start_time: build_date(date,9), 
+        end_time: build_date(date,10)
+      },
+      {
+        start_time: build_date(date,10),
+        end_time: build_date(date,11)
+      },
+      {
+        start_time: build_date(date,11),
+        end_time: build_date(date,12)
+      },
+      {
+        start_time: build_date(date,12),
+        end_time: build_date(date,13)
+      },
+      {
+        start_time: build_date(date,13),
+        end_time: build_date(date,14)
+      },
+      {
+        start_time: build_date(date,14),
+        end_time: build_date(date,15)
+      },
+      {
+        start_time: build_date(date,15),
+        end_time: build_date(date,16)
+      },
+      {
+        start_time: build_date(date,16),
+        end_time: build_date(date,17)
+      },
+      {
+        start_time: build_date(date,17),
+        end_time: build_date(date,18)
+      }
+    ]]}
+    ##recorremos el slots q son los appointment
+    if slots.size > 0
+      a = slots.map do |app|
+
+        ##almacenamos en "b" la construnccion de la fecha y hora del appointment
+        b =build_time(app.date, app.time)
+
+        ##sacamos las horas que no estan disponibles y nos quedan las disponibles 
+        hours[:available_slots][0].reject!{|hour| b >= hour[:start_time] && b <=hour[:end_time]}
+            
+      end
+    else
+      hours[:available_slots]
+    end
+
+  end
+
+  def self.build_date(date,hour)
+    f = date.split("-")
+    y = f[0].to_i
+    mo = f[1].to_i
+    d = f[2].to_i
+    time_format = Time.new(y,mo,d,hour)
+  end
 end
