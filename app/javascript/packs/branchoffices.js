@@ -20,9 +20,9 @@ function eventCalendar() {
         initialView: 'dayGridMonth',
         selectable: true,
         dateClick: function(info) {
-            $('.modal').modal('show');
+            $('.modal').show();
             getAvailableSlots(id,info.dateStr);
-            console.log(info.dateStr);
+           // console.log(info.dateStr);
 
            
 
@@ -50,13 +50,13 @@ function eventCalendar() {
         url:`/available_slots/${id}/${date}`,
         type: 'GET'
     }).done(function (response) {
-      console.log(response[0]);
-        response[0].forEach(function(slot) {
+      console.log("respuesta:",response);
+        response.forEach(function(slot) {
          var date_start = new Date(slot.start_time)
          var date_end = new Date(slot.end_time)
          var hours_start = date_start.getHours();
          var hours_end = date_end.getHours();
-         
+         console.log("slot" , slot);
           $(".modal-body .row").append(`<div class="col-6"><button class="btn">${hours_start}hrs - ${hours_end}hrs</button></div>`);
 
         })
@@ -68,6 +68,7 @@ function eventCalendar() {
     
     $('#add-event').on('click', '.modal button[data-bs-dismiss="modal"]', function() {
       $(".modal-body .row").empty();
+      $(".modal").hide();
     });
 /* $(document).on('turbolinks:load', eventCalendar); */
 $(document).ready(function(){

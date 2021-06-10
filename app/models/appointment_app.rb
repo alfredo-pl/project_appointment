@@ -58,8 +58,9 @@ class AppointmentApp < ApplicationRecord
    # method return json to slots hours avaible
 
   def self.slots_hours_avaible(id,date)
+   
     slots = AppointmentApp.where(branchoffices: id, date: date , state: "Timetable")
-    hours = {"available_slots": [[
+    hours = {"available_slots": [
       {
         start_time: build_date(date,9), 
         end_time: build_date(date,10)
@@ -96,18 +97,21 @@ class AppointmentApp < ApplicationRecord
         start_time: build_date(date,17),
         end_time: build_date(date,18)
       }
-    ]]}
+    ]}
     ##recorremos el slots q son los appointment
-    if slots.size > 0
+    if !slots.empty?
+
+      
       a = slots.map do |app|
-
+        
         ##almacenamos en "b" la construnccion de la fecha y hora del appointment
-        b =build_time(app.date, app.time)
-
+        build =build_time(app.date, app.time)
+        byebug
         ##sacamos las horas que no estan disponibles y nos quedan las disponibles 
-        hours[:available_slots][0].reject!{|hour| b >= hour[:start_time] && b <=hour[:end_time]}
+        hours[:available_slots].reject!{|hour| build >= hour[:start_time] && build <=hour[:end_time]}
             
       end
+     
     else
       hours[:available_slots]
     end
