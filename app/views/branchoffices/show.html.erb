@@ -16,7 +16,9 @@
   
 </p>
 
-<div id="add_event"></div>
+<div id="add-event">
+<%= render 'modal'%>
+</div>
  <div id='calendar'></div>
 
 <%= link_to 'Atention schedule', new_business_branchoffice_atention_schedule_path( branchoffice_id: @branchoffice) %>
@@ -24,3 +26,7 @@
 <%= link_to 'New Appointment App', new_appointment_app_path(branchoffice_id: @branchoffice.id) %>
 <%= link_to 'Edit', edit_business_branchoffice_path(@branchoffice) %> |
 <%= link_to 'Back', dashboard_user_path%>
+
+
+
+<%=javascript_pack_tag("branchoffices")%>
