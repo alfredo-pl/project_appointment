@@ -105,9 +105,7 @@ class AppointmentApp < ApplicationRecord
       # Por cada available_slot, revisamos si hay un appointment entre dicho horario
       # y borramos el available_slot en caso que si haya un appointment entremedio
       available_slots.each_with_index do |available_slot, index|
-        datetimes.each do |datetime|
-          if datetime.between?(available_slot[:start_time], available_slot[:end_time])
-            available_slots.delete_at(index)
+        datetimes.each do |datetime| if datetime.between?(available_slot[:start_time], available_slot[:end_time]) available_slots.delete_at(index)
           end
         end
       end
@@ -122,4 +120,18 @@ class AppointmentApp < ApplicationRecord
     d = f[2].to_i
     time_format = Time.new(y,mo,d,hour)
   end
+
+  def self.create_appointment(branch_id, star_time, end_time, user)
+    AppointmentApp.create(
+      user_id: user.id,
+      branchoffice_id: branch_id,
+      date: ,
+      time: ,
+      duration: ,
+      code: self.generator_code,
+      state: 'timetable'
+    )
+
+  end
+
 end

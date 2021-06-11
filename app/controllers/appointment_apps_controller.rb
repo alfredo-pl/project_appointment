@@ -35,6 +35,20 @@ class AppointmentAppsController < ApplicationController
     end
   end
 
+  def create_appointment_ajax
+    start_time = params[:start_time]
+    end_time = params[:end_time]
+    branch_id = params[:branch_id].to_i
+
+    respond_to do |format|
+      if AppointmentApp.create_appointment(branch_id, start_time, end_time, current_user)
+        format.json {}
+      else
+        format.json {}
+      end
+    end
+  end
+
   # PATCH/PUT /appointment_apps/1 or /appointment_apps/1.json
   def update
     respond_to do |format|
@@ -51,14 +65,14 @@ class AppointmentAppsController < ApplicationController
   def record_user
     @appointments_user = AppointmentApp.where(user_id: current_user)
   end
-  
+
   def appointment_cancel
-  
+
     respond_to do |format|
       if @appointment_app.cancel_appointment
         format.html { redirect_to record_user_path, notice: "Your Appointment app was successfully cancelled" }
       else
-        format.js 
+        format.js
       end
     end
   end
