@@ -51,7 +51,7 @@ const getAvailableSlots = (id,date) =>{
     url:`/available_slots/${id}/${date}`,
     type: 'GET'
   }).done(function (response) {
-    response.forEach(function(slot) {
+    response.available_slots.forEach(function(slot) {
       var date_start = new Date(slot.start_time);
       var date_end = new Date(slot.end_time);
       var hours_start = date_start.getHours();
@@ -78,7 +78,10 @@ $(document).on('click', '.btn-select-appointment', function() {
   var branchId = $("#branch_id").text();
 
   $.ajax({
-    url: 'ruta',
+    url: '/create_appointment',
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  },
     type: 'POST',
     dataType: 'json',
     data: {
