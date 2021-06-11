@@ -34,7 +34,7 @@ class AppointmentApp < ApplicationRecord
 
   def self.events_calendar(branchoffice_id)
 
-    appointments = AppointmentApp.where(branchoffice_id: branchoffice_id, state: "Timetable")
+    appointments = AppointmentApp.where(branchoffice_id: branchoffice_id, state: "timetable")
     app = appointments.map{|event| info ={
       "id" => event.id,
       "start" => build_time(event.date, event.time),
@@ -105,7 +105,9 @@ class AppointmentApp < ApplicationRecord
       # Por cada available_slot, revisamos si hay un appointment entre dicho horario
       # y borramos el available_slot en caso que si haya un appointment entremedio
       available_slots.each_with_index do |available_slot, index|
-        datetimes.each do |datetime| if datetime.between?(available_slot[:start_time], available_slot[:end_time]) available_slots.delete_at(index)
+        datetimes.each do |datetime|
+          if datetime.between?(available_slot[:start_time], available_slot[:end_time])
+             available_slots.delete_at(index)
           end
         end
       end
@@ -121,13 +123,17 @@ class AppointmentApp < ApplicationRecord
     time_format = Time.new(y,mo,d,hour)
   end
 
-  def self.create_appointment(branch_id, star_time, end_time, user)
+  def self.create_appointment(branch_id, start_time, end_time, user)
+ 
+    time = " #{start_time.to_time.strftime('%H')}"
+    duration = " #{build_date(Date.parse("2001-01-01").strftime("%Y-%m-%d"),((end_time.to_datetime - start_time.to_datetime) * 24 * 60/60).to_i).strftime("%H")}"
+ 
     AppointmentApp.create(
       user_id: user.id,
       branchoffice_id: branch_id,
-      date: ,
-      time: ,
-      duration: ,
+      date: start_time.to_date.strftime("%Y-%m-%d"),
+      time: time,
+      duration: duration ,
       code: self.generator_code,
       state: 'timetable'
     )
