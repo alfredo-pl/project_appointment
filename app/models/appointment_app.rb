@@ -12,7 +12,7 @@ class AppointmentApp < ApplicationRecord
     direction = Branchoffice.references(:appointment_apps).where(id: branchoffice_id).pluck :address
     direction.first
   end
-    
+
   def cancel_appointment
     self.state = "Cancelled"
     self.save
@@ -22,8 +22,8 @@ class AppointmentApp < ApplicationRecord
     alt =Random.new
     num = %w{ 1 2 3 4 5 6 7 8 9 0 }
     code = []
-    5.times do 
-      
+    5.times do
+
       code << alt.rand(num.length)
     end
     code.join().to_i
@@ -33,36 +33,35 @@ class AppointmentApp < ApplicationRecord
   # method return json to calendar
 
   def self.events_calendar(branchoffice_id)
-    
+
     appointments = AppointmentApp.where(branchoffice_id: branchoffice_id, state: "Timetable")
     app = appointments.map{|event| info ={
       "id" => event.id,
       "start" => build_time(event.date, event.time),
       "title" => event.time.strftime("at %I:%M%p") +" "+ event.user_id.to_s
-    }} 
-    
+    }}
+
   end
 
   # build datetime
 
   def self.build_time(date, time)
-   y = date.strftime("%Y").to_i
-   mo = date.strftime("%_m").to_i
-   d = date.strftime("%e").to_i
-   h = time.strftime("%H").to_i
-   m = time.strftime("%M").to_i
+    y = date.strftime("%Y").to_i
+    mo = date.strftime("%_m").to_i
+    d = date.strftime("%e").to_i
+    h = time.strftime("%H").to_i
+    m = time.strftime("%M").to_i
     time_format = Time.new(y,mo,d,h,m)
   end
 
 
-   # method return json to slots hours avaible
+  # method return json to slots hours avaible
 
   def self.slots_hours_avaible(id,date)
-   
-    slots = AppointmentApp.where(branchoffices: id, date: date , state: "Timetable")
-    hours = {"available_slots": [
+    slots = AppointmentApp.where(branchoffices: id, date: date , state: "timetable")
+    available_slots = [
       {
-        start_time: build_date(date,9), 
+        start_time: build_date(date,9),
         end_time: build_date(date,10)
       },
       {
@@ -97,25 +96,23 @@ class AppointmentApp < ApplicationRecord
         start_time: build_date(date,17),
         end_time: build_date(date,18)
       }
-    ]}
+    ]
     ##recorremos el slots q son los appointment
     if !slots.empty?
+      # Obtenemos solo los DateTimes para cada Appointment
+      datetimes = slots.map { |slot| build_time(slot.date, slot.time) }
 
-      
-      a = slots.map do |app|
-        
-        ##almacenamos en "b" la construnccion de la fecha y hora del appointment
-        build =build_time(app.date, app.time)
-        byebug
-        ##sacamos las horas que no estan disponibles y nos quedan las disponibles 
-        hours[:available_slots].reject!{|hour| build >= hour[:start_time] && build <=hour[:end_time]}
-            
+      # Por cada available_slot, revisamos si hay un appointment entre dicho horario
+      # y borramos el available_slot en caso que si haya un appointment entremedio
+      available_slots.each_with_index do |available_slot, index|
+        datetimes.each do |datetime|
+          if datetime.between?(available_slot[:start_time], available_slot[:end_time])
+            available_slots.delete_at(index)
+          end
+        end
       end
-     
-    else
-      hours[:available_slots]
     end
-
+    { "available_slots": available_slots }
   end
 
   def self.build_date(date,hour)
