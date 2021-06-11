@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'landing/index'
   resources :appointment_apps
+  post 'create_appointment', to: 'appointment_apps#create_appointment_ajax'
+ 
+ 
   get 'record_user', to: 'appointment_apps#record_user'
 
   get 'appointments_branchoffices/:id', to: 'branchoffices#appointments_branchoffices'
