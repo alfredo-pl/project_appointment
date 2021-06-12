@@ -32,8 +32,24 @@
     </div>
 </div>
 <% end %>
+<div class="d-flex justify-content-center">
+    <div class="col-lg-9 col-md-9">
+      <div class="form-inline input-field">
+       <%= link_to "Sign up", new_user_registration_path , class:"btn btn-dark text-white waves-effect "%>
+      </div>
+    </div>
 </div>
 
-<%= link_to "Sign In with Facebook", user_facebook_omniauth_authorize_path, method: :post%>
+<div class="d-flex justify-content-center">
+    <div class="col-lg-9 col-md-9">
+      <div class="form-inline input-field">
+        <%= link_to "Sign In with Facebook", user_facebook_omniauth_authorize_path, method: :post, class:"btn btn-primary text-white waves-effect waves-light"%>
+      </div>
+    </div>
+</div>
+
+
+</div>
+
 
  
