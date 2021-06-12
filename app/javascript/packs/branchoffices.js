@@ -90,14 +90,18 @@ $(document).on('click', '.btn-select-appointment', function() {
       branch_id: branchId
     }
   }).done(function(response){
-    console.log(response);
+  
+    alert("You appoinment is timetable")
+    $(".modal-body .row").empty();
+    $(".modal").hide();
+    setTimeout(function(){window.location.href="/record_user"},1000)
     // Feedback a usuario
     // Cerrar Modal quizás?
     // Re-renderizar fullcalendar para que se
     // muestre en el calendario
     // el nuevo appointment creado
   }).fail(function(error){
-    console.warning(error);
+    console.error(error);
   });
 });
 
