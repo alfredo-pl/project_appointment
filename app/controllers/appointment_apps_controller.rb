@@ -42,7 +42,7 @@ class AppointmentAppsController < ApplicationController
 
     respond_to do |format|
       if AppointmentApp.create_appointment(branch_id, start_time, end_time, current_user)
-        format.json {}
+        format.json { render json: {message: "created" , data: "appointment"}} 
       else
         format.json {}
       end
