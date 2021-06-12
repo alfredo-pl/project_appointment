@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top navbar-white-2">
     <div class="container">
      <% if current_user && current_user.role == 1%>
-        <a class="navbar-brand scroll-to" href="<%= dashboard_business_path%>"><%=image_tag 'others/header-logo', class:"navbar-logo", alt:"Nav Logo"%>Appx.</span></a>
+        <a class="navbar-brand scroll-to" href="<%= dashboard_business_path%>"><%=image_tag 'others/appnow', width:"80", alt:"Nav Logo"%></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav3" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,7 +20,7 @@
                 </li>
             </ul>
         <% elsif current_user && current_user.role == 0 %>
-          <a class="navbar-brand scroll-to" href="<%= dashboard_user_path%>"><%=image_tag 'others/header-logo', class:"navbar-logo", alt:"Nav Logo"%>Appx.</span></a>
+          <a class="navbar-brand scroll-to" href="<%= dashboard_user_path%>"><%=image_tag 'others/appnow' ,width:"80", alt:"Nav Logo"%></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav3" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +37,7 @@
                 </li>
             </ul>
           <%else%>
-            <a class="navbar-brand scroll-to" href="#"><%=image_tag 'others/header-logo', class:"navbar-logo", alt:"Nav Logo"%>Appx</a>
+            <a class="navbar-brand scroll-to" href="#"><%=image_tag 'others/appnow',width:"80" , alt:"Nav Logo"%></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav3" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
