@@ -26,6 +26,7 @@
         </button>
          <div class="collapse navbar-collapse" id="nav3">
             <ul class="navbar-nav ml-auto">
+             <li class="w-100"><%=link_to 'Dashboard', dashboard_user_path, class:"nav-link scroll-to"%></li>
                 <li class="w-100"><%=link_to 'Records ', record_user_path, class:"nav-link scroll-to"%></li>
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="perfil"><%= current_user.email%></a>
@@ -45,7 +46,6 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                 <li class="nav-item"><a class="nav-link scroll-to" href="#">HOME</a></li>
-                <li class="nav-item"><a class="nav-link scroll-to" href="#feature">Features</a></li>
                 <li class="nav-item"><a class="nav-link scroll-to" href="#clients">Clients</a></li>
                 <li class="nav-item"><a class="nav-link scroll-to" href="#pricing">Pricing</a></li>
                 <li class="nav-item"><a class="nav-link scroll-to" href="#contact">Contact</a></li>
