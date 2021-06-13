@@ -9,6 +9,7 @@ class BranchofficesController < ApplicationController
 
   # GET /branchoffices/1 or /branchoffices/1.json
   def show
+    @business = Business.find params[:business_id]
     @atention_schedules = @branchoffice.atention_schedule
     @atention_schedule = AtentionSchedule.new
     @appointment_app = AppointmentApp.new
