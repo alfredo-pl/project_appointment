@@ -36,14 +36,16 @@ $(document).ready(function () {
                 }
             }
         }).done(function (response) {
-            alert('Se agregó correctamente');
+            alert('Your profile was updated correctly');
             console.log(response);
             $("#formUser").remove();
+            $(".user-profile").hide();
         }).fail(function (error) {
             console.error(error);
         });
     }else{
         $("#formUser").remove();
+        $(".user-profile").hide();
     }
     });
 
@@ -57,40 +59,53 @@ $(document).ready(function () {
             type: 'GET'
         }).done(function (response) {
             console.log(response);
-                
-                $("#root").append(`
-            <div id="formUser">
-            
-                <div class="field">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" value="${response.name}"/><br />
-                </d>
-                <div class="field">
-                    <label for="run">Run</label>
-                    <input type="text" name="run" value="${response.run}"/><br />
+            $('.user-profile').show();
+                $(".user-profile .row").append(`
+            <div id="formUser" class="row">
+                <div class="col-lg-6 col-md-6">
+                <div class="input-field>
+                    <label for="name" class="form-name">Name:</label>
+                        <input type="text" name="name" value="${response.name}"/>
+                    </div>
                 </div>
-                <div class="field">
-                    <label for="direction">Direction:</label>
-                    <input type="text" name="direction" value="${response.direction}"/><br />
+                <div class="col-lg-6 col-md-6">
+                <div class="input-field>
+                    <label for="run" class="form-name">Run:</label>
+                        <input type="text" name="run" value="${response.run}"/>
+                    </div>
                 </div>
-                <div class="field">
-                    <label for="phone">Phone</label>
-                    <input type="text" name="phone" value="${response.phone}"/><br />
-                </div>
-                <div class="field">
 
-                <div class="actions">
-                    <input type="submit" value="Update!" class="btn-update-form" data-type="update">
-                    <input type="hidden" name="id" value="${response.id}"/>
-                    <input type="button" value="cancel" class="btn-update-form" data-type="cancel">
+                <div class="col-lg-6 col-md-6">
+                <div class="input-field>
+                    <label for="direction" class="form-name">Direction:</label>
+                        <input type="text" name="direction" value="${response.direction}"/>
+                    </div>
                 </div>
-            </div>`);
+                <div class="col-lg-6 col-md-6">
+                    <div class="input-field>
+                    <label for="phone" class="form-name">Phone:</label>
+                        <input type="text" name="phone" value="${response.phone}"/>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 d-flex justify-content-center">
+                    <div class="form-inline input-field">
+                        <input type="submit" value="Update!" class="btn-update-form btn btn-white waves-effect waves-light" data-type="update">
+                        <input type="hidden" name="id" value="${response.id}"/>
+                        <input type="button" value="cancel" class="btn-update-form btn btn-dark text-white waves-effect" data-type="cancel">
+                    </div>
+                </div>
+            </div>`); 
 
         }).fail(function (error) {
             console.error(error);
         });
     }
 
+    $('#root').on('click', '.user-profile button[data-bs-dismiss="modal"]', function() {
+        $(".user-profile .row").empty();
+        $(".user-profile").hide();
+      });
 
 
 });
