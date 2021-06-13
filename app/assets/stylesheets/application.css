@@ -40,6 +40,10 @@
     border-radius: 1.3rem !important;
 }
 
+.round-top-1{
+    border-top-left-radius: 1.3rem !important;
+    border-top-right-radius: 1.3rem !important;
+}
 .effect-hover-up{
     transition: ease-in-out .2s;
 }
