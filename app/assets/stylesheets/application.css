@@ -68,3 +68,9 @@ color:red;
 .text-add{
     color:#2e3192!important;
 }
+
+.fix-obj{
+    object-fit: cover;
+    height: 50vh;
+    width: 100%;
+}
