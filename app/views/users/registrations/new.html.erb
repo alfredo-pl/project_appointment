@@ -1,47 +1,96 @@
-<h2>Registrate up</h2>
+<div class="col-lg-8 mx-auto form-wrap" style="margin-top: 180px;">
+  <div class="col-lg-12">
+      <div class="section-wrap pt-3 pb-4 mb-4 mx-auto text-center">
+          <div class="section-title mb-4">SIGN IN</div>
+          <div class="section-tag">Form to sign in.</div>
+      </div>
+  </div>
 
+ 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
+ <div class="row">
+    <div class="col-lg-6 col-md-6">
+        <%= f.label :email ,class:"form-name" %>
+      <div class="input-field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+  
+      <div class="col-lg-6 col-md-6">
+        <%= f.label :name ,class:"form-name" %>
+      <div class="input-field">
+        <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+ 
+    <div class="col-lg-6 col-md-6">
+     <%= f.label :password,class:"form-name" %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <div class="input-field">
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+    </div>
+  
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+ 
+    <div class="col-lg-6 col-md-6">
+     <%= f.label :password_confirmation,class:"form-name" %>
+      <div class="input-field">
+        <%=f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-<div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+ 
+    <div class="col-lg-6 col-md-6">
+        <%= f.label :run ,class:"form-name" %>
+      <div class="input-field">
+        <%=f.text_field :run %>
+      </div>
+    </div>
+ 
+  <div class="col-lg-6 col-md-6">
+        <%= f.label :phone,class:"form-name" %>
+      <div class="input-field">
+        <%=f.text_field :phone  %>
+      </div>
+    </div>
+ 
+    <div class="col-lg-12 col-md-12">
+        <%= f.label :direction ,class:"form-name" %>
+      <div class="input-field">
+        <%=f.text_field :direction  %>
+      </div>
+    </div>
+  
 
-<div class="field">
-    <%= f.label :run %><br />
-    <%= f.text_field :run %>
-  </div>
-<div class="field">
-    <%= f.label :direction %><br />
-    <%= f.text_field :direction %>
-  </div>
+    <div class="col-lg-12 col-md-12 d-flex justify-content-center">
+      <div class="form-inline input-field">
+        <%= f.submit "Sign up", class:"btn btn-white waves-effect waves-light" %>
+      </div>
+    </div>
 
-<div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+</div>
 <% end %>
 
-<%= render "users/shared/links" %
+    <div class="col-lg-9 col-md-9">
+      <div class="form-inline input-field">
+       <%= link_to "Log in", new_user_session_path, class:"btn btn-dark text-white waves-effect "%>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-lg-9 col-md-9">
+      <div class="form-inline input-field">
+        <%= link_to "Sign In with Facebook", user_facebook_omniauth_authorize_path, method: :post, class:"btn btn-primary text-white waves-effect waves-light"%>
+      </div>
+    </div>
+
+
+</div>
+
