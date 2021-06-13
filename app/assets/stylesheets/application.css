@@ -58,3 +58,10 @@
 .cancel-icon:hover{
 color:red;
 }
+.btn-add{
+    background-color: #2e3192!important;
+}
+.btn-add:hover{
+    background-color: white!important;
+    color:#2e3192!important;
+}

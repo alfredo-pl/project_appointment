@@ -1,5 +1,12 @@
 <div class="container py-5">
-  <h2 class="section-title mb-5">Your Businesses</h2>
+  <div class="d-flex justify-content-between">
+    <h2 class="section-title ">Your Businesses</h2>
+    <div class="form-inline input-field">
+      <%= link_to( new_business_path, class:"btn btn-add text-white"  ) do %>
+        <i class="fas fa-plus-circle"></i> ADD
+      <% end %>
+    </div>
+  </div>
     <% @businesses.each do |business| %>
       <div class="row mt-5">
         <div class="col-4">
@@ -44,5 +51,3 @@
     <%end%>  
 </div>
 
-
-<%= link_to 'New Business', new_business_path %>
