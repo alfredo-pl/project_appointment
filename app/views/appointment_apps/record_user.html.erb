@@ -1,8 +1,8 @@
 
 <div class="container py-5">
-<h2 class="section-title">Record Apointments User</h2>
+<h2 class="section-title mb-5">Record Apointments User</h2>
    <% @appointments_user.each do |appointment|%>
-<div class="my-5 p-3 bg-body round-1 shadow ">
+<div class="my-3 p-3 bg-body round-1 shadow effect-hover-up">
   <div class="d-flex justify-content-between">
   <div class="hour d-flex align-items-center">
     <p class="fs-4 mb-0 ml-2">
@@ -17,11 +17,11 @@
     <strong class="d-block text-gray-dark"><%= appointment.date.strftime("%m-%d-%Y") %></strong>
     <p class="fst-italic"> #<%= appointment.code%></p>
   </div>
-  <div class="icons fs-4 d-flex align-items-center mr-2">
+  <div class="fs-4 d-flex align-items-center mr-2">
       <%if appointment.state != "Cancelled"%>
         <i class="fas fa-hourglass-start mr-3"></i>
         <%= link_to({ action: "appointment_cancel", id: appointment },method: :put, data: { confirm: "you are sure? would you like to cancel the appointment" } ) do %>
-          <i class="far fa-times-circle"></i>
+          <i class="far fa-times-circle cancel-icon"></i>
         <% end %>
       <% else %>
          <i class="far fa-times-circle text-danger"></i>

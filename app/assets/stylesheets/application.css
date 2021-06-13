@@ -39,3 +39,18 @@
 .round-1{
     border-radius: 1.3rem !important;
 }
+
+.effect-hover-up{
+    transition: ease-in-out .2s;
+}
+.effect-hover-up:hover{
+    transform: translate(5px, -5px);
+    border-left: solid 5px #26a69a;
+   
+}
+.cancel-icon{
+    color:gray;
+}
+.cancel-icon:hover{
+color:red;
+}
