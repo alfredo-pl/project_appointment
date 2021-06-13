@@ -1,6 +1,17 @@
-<h1>Editing Branchoffice</h1>
-
-<%= render 'form', branchoffice: @branchoffice %>
-
-<%= link_to 'Show', business_branchoffice_path(@business,@branchoffice) %> |
-<%= link_to 'Back', business_branchoffice_path(@business) %>
+<div class="container py-5">
+    <div class="d-flex">
+        <div class="col-1">
+            <div class="form-inline input-field">
+                <%= link_to( business_branchoffice_path(@business,@branchoffice) , class:"btn btn-white mb-3") do %>
+                    <i class="far fa-eye"></i> Show
+                <% end %>
+                <%= link_to(business_branchoffice_path(@business) , class:"btn btn-add text-white") do %>
+                    <i class="fas fa-arrow-circle-left"></i> Back
+                <% end %>
+            </div>
+        </div>
+        <div class="col-11">
+           <%= render 'form', branchoffice: @branchoffice %>
+        </div>
+    </div>
+</div>
