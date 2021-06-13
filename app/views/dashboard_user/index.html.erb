@@ -1,20 +1,22 @@
 <div class="container">
-<div class="row">
-<div class="col-8">
-<% @businesses.each do |business| %>
-  <div class="card" style="width: 18rem;">
-      <img src="" class="card-img-top" alt="">
-    <div class="card-body">
-      <h5 class="card-title"><%=business.name%></h5>
-      <%= link_to 'Go', business_path(business), class:"btn btn-primary" %> 
-    </div>
+  <div class="row mt-5">
+    <% @businesses.each do |business| %>
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+          <img src="https://errekainmobiliaria.com/img/not-available.jpg" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title"><%=business.name%></h5>
+
+            <div class="col-lg-12 col-md-12 d-flex justify-content-center">
+              <div class="form-inline input-field">
+                  <%= link_to 'Visit', business_path(business), class:"btn btn-white waves-effect waves-light" %>
+              </div>
+            </div>
+
+        
+        </div>
+      </div>
+    </div>    
+    <%end%>  
   </div>
-<%end%>  
 </div>
-<div class="col-4" id="root">
-<div>
-</div>
-    
-  </tbody>
-</table>
-<%=javascript_pack_tag("dashboard_user")%>
