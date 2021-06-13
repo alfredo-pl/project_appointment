@@ -17,6 +17,11 @@
             <%= branch.address%>
           </p>
           <div class="form-inline input-field text-end">
+            <%= link_to(business_branchoffice_path(@business, branch), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger text-white p-2") do %>
+              <i class="far fa-times-circle text-white"></i>
+            <% end %>
+          </div>
+          <div class="form-inline input-field text-end">
             <%= link_to(business_branchoffice_path(@business, branch) , class:"btn btn-white waves-effect waves-light p-2"  ) do %>
               <i class="far fa-calendar-plus"></i>
             <% end %>
@@ -37,7 +42,16 @@
         <% end %>
       </div>
     </div>
+    <% else %>
+      <div class="mt-3">
+        <div class="form-inline input-field">
+          <%= link_to( :back, class:"btn btn-add text-white") do %>
+            <i class="fas fa-arrow-circle-left"></i> Back
+          <% end %>
+        </div>
+      </div>
     <% end %>
+    
   </div>
 </div>
 
