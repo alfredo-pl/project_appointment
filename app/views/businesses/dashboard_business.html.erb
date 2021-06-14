@@ -1,1 +1,20 @@
-<h2>Dashboard Business</h2>
+ <div class="container mt-3">
+  <h2 class="section-title text-center mt-5">Dashboard Business</h2>
+  <div class="section-tag text-center mb-3">Summary of your products</div>
+    <div class="row justify-content-center">
+        <div class="m-4 p-4 bg-body round-1 shadow col-6">
+            <div class=" pb-3">
+            <h5 class="section-tag text-center">Total appointments for each business</h5>
+            <%= pie_chart @business %>
+            </div>
+        </div>
+    </div>   
+</div>
+
+
+
+<%#
+<div>
+    <h2>All Categories</h2>
+    <%= pie_chart @categories%>
+    <%# <%= column_chart  @sales_group_by_month, legend: "top",title: "Last 12 months",prefix: "$",thousands: "." %> 
