@@ -74,3 +74,15 @@ color:red;
     height: 50vh;
     width: 100%;
 }
+
+.copyright{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
+.copyright  p> a{
+    color: #26a69a;
+    text-decoration: none;
+    font-weight: 900;
+}
