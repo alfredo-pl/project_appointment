@@ -16,14 +16,8 @@ class BusinessesController < ApplicationController
   end
 
   def dashboard_business
-    arr =[]
-    ha = {}
-      hash = Business.where(user_id: current_user)
-      keys = hash.each{| key, value| arr <<{ name: key.name, value: Business.get_count_appointment(key)} }
-      arr.each do |ele|
-        ha[ele[:name]]= ele[:value]
-      end
-      @business = ha
+      @business = Business.get_all_appointment(current_user)
+      @branchoffice = Business.get_branchoffice(current_user)
   end
   # GET /businesses/new
   def new
