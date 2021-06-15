@@ -1,6 +1,24 @@
+<div class="container py-5">
+    <div class="d-flex">
+        <div class="col-1">
+            <div class="form-inline input-field">
+                <%= link_to( @atention_schedule , class:"btn btn-white mb-3") do %>
+                    <i class="far fa-eye"></i> Show
+                <% end %>
+                <%= link_to(atention_schedules_path  , class:"btn btn-add text-white") do %>
+                    <i class="fas fa-arrow-circle-left"></i> Back
+                <% end %>
+            </div>
+        </div>
+        <div class="col-11">
+           <%= render 'form',atention_schedule: @atention_schedule %>
+        </div>
+    </div>
+</div>
+
 <h1>Editing Atention Schedule</h1>
 
-<%= render 'form', atention_schedule: @atention_schedule %>
+<%= render 'form',  %>
 
-<%= link_to 'Show', @atention_schedule %> |
-<%= link_to 'Back', atention_schedules_path %>
+<%= link_to 'Show',  %> |
+<%= link_to 'Back', %>
