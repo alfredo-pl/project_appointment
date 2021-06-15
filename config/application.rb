@@ -18,7 +18,7 @@ module Appointment
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.assets.precompile += %w( .svg .eot .woff .ttf)
+    config.assets.paths << Rails.root.join("app", "assets", "fonts", "stylesheets", "images","javascripts")
+    config.assets.precompile += %w( .svg .eot .woff .ttf .png .jpg)
   end
 end
