@@ -1,16 +1,22 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Branchoffice:</strong>
-  <%= @atention_schedule.branchoffice_id %>
-</p>
-
-<p>
-  <strong>Day:</strong>
-  <%= @atention_schedule.day %>
-</p>
-
-
-<%# 
-<%= link_to 'Edit', edit_atention_schedule_path(@atention_schedule) %> |
-<%# <%= link_to 'Back', atention_schedules_path %> %>
+<div class="container my-5 pb-4">
+  <h2 class="section-title text-center mt-5">Atention Schedule </h2>
+  
+  <div class="row justify-content-center">
+   
+        <div class="mt-3">
+          <div class="form-inline input-field">
+            <%= link_to( businesses_path, class:"btn btn-add text-white") do %>
+              <i class="fas fa-arrow-circle-left"></i> Back
+            <% end %>
+ 
+          </div>
+      <div class="mt-3 d-flex  justify-content-center">
+        <div class="form-inline input-field">
+           <div class="section-tag text-center mb-3"><%= @atention_schedule.day%></div>
+        </div>
+   
+        </div>
+      </div>
+  </div>
+</div>

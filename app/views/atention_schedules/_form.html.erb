@@ -1,4 +1,12 @@
-<%= form_with(model: [@business,@branchoffice,atention_schedule]) do |form| %>
+<div class="col-lg-8 mx-auto form-wrap" style="margin-top: 180px;">
+  <div class="col-lg-12">
+      <div class="section-wrap pt-3 pb-4 mb-4 mx-auto text-center">
+          <div class="section-title mb-4">New Atention</div>
+          <div class="section-tag">Form to atention schedule.</div>
+      </div>
+  </div>
+  
+<%= form_with(model: [@business,@branchoffice,atention_schedule]) do |f| %>
   <% if atention_schedule.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(atention_schedule.errors.count, "error") %> prohibited this atention_schedule from being saved:</h2>
@@ -10,13 +18,20 @@
       </ul>
     </div>
   <% end %>
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+          <%= f.label :day ,class:"form-name" %>
+        <div class="input-field">
+          <%= f.text_field :day %>
+        </div>
+      </div>
+   
 
-  <div class="field">
-    <%= form.label :day %>
-    <%= form.text_field :day %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="col-lg-12 col-md-12 d-flex justify-content-center">
+        <div class="form-inline input-field">
+          <%= f.submit(class:"btn btn-white waves-effect waves-light") %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
