@@ -857,7 +857,7 @@ input.valid:not([type]), input.valid:not([type]):focus, input.valid[type="text"]
 .mod-video.modal .modal-dialog {
     top: 50%;
     transform: translateY(-50%);
-    max-widthr: 800px;
+    max-width: 800px;
     margin: 40px auto 0;
 }
 .mod-video.modal .modal-body {
@@ -1038,7 +1038,7 @@ input.valid:not([type]), input.valid:not([type]):focus, input.valid[type="text"]
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
-    -moz-font-feature-settings: 'liga';
+    -moz-font-feature-setting: 'liga';
     -moz-osx-font-smoothing: grayscale;
 }
 
