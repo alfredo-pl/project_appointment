@@ -16,6 +16,8 @@ class BusinessesController < ApplicationController
   end
 
   def dashboard_business
+      @business = Business.get_all_appointment(current_user)
+      @branchoffice = Business.get_branchoffice(current_user)
   end
   # GET /businesses/new
   def new
