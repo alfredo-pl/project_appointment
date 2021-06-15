@@ -4,6 +4,7 @@
           <div class="section-title mb-4">LOGIN</div>
           <div class="section-tag">Form to login.</div>
       </div>
+
   </div>
   
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -12,9 +13,26 @@
         <%= f.label :email ,class:"form-name" %>
       <div class="input-field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
       </div>
     </div>
   </div>
+<div class="d-flex justify-content-center">
+    <div class="col-lg-9 col-md-9">
+      <div class="form-inline input-field">
+        <%= f.submit "Log in", class:"btn btn-white waves-effect waves-light" %>
+      </div>
+    </div>
+</div>
+<% end %>
+<div class="d-flex justify-content-center">
+    <div class="col-lg-9 col-md-9">
+      <div class="form-inline input-field">
+       <%= link_to "Sign up", new_user_registration_path , class:"btn btn-dark text-white waves-effect "%>
+      </div>
+    </div>
+</div>
+
 
   <div class="d-flex justify-content-center">
     <div class="col-lg-9 col-md-9">
