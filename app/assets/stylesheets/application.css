@@ -26,5 +26,62 @@
  }
 
  .modal{
-    background-color:transparent!important;
+    background-color: rgb(0 0 0 / 42%)!important;
+    max-height: 100%!important;
+}
+.modal-dialog{
+    margin: 10rem auto!important;
+}
+.mgt-100{
+    margin-top: 100px!important;
+}
+
+.round-1{
+    border-radius: 1.3rem !important;
+}
+
+.round-top-1{
+    border-top-left-radius: 1.3rem !important;
+    border-top-right-radius: 1.3rem !important;
+}
+.effect-hover-up{
+    transition: ease-in-out .2s;
+}
+.effect-hover-up:hover{
+    transform: translate(5px, -5px);
+    border-left: solid 5px #26a69a;
+   
+}
+.cancel-icon{
+    color:gray;
+}
+.cancel-icon:hover{
+color:red;
+}
+.btn-add{
+    background-color: #2e3192!important;
+}
+.btn-add:hover{
+    background-color: white!important;
+    color:#2e3192!important;
+}
+.text-add{
+    color:#2e3192!important;
+}
+
+.fix-obj{
+    object-fit: cover;
+    height: 50vh;
+    width: 100%;
+}
+
+.copyright{
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
+.copyright  p> a{
+    color: #26a69a;
+    text-decoration: none;
+    font-weight: 900;
 }
