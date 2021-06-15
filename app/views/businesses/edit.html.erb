@@ -1,6 +1,17 @@
-<h1>Editing Business</h1>
-
-<%= render 'form', business: @business %>
-
-<%= link_to 'Show', @business %> |
-<%= link_to 'Back', businesses_path %>
+<div class="container py-5">
+    <div class="d-flex">
+        <div class="col-1">
+            <div class="form-inline input-field">
+                <%= link_to(  @business, class:"btn btn-white mb-3") do %>
+                    <i class="far fa-eye"></i> Show
+                <% end %>
+                <%= link_to( businesses_path, class:"btn btn-add text-white") do %>
+                    <i class="fas fa-arrow-circle-left"></i> Back
+                <% end %>
+            </div>
+        </div>
+        <div class="col-11">
+            <%= render 'form', business: @business %>
+        </div>
+    </div>
+</div>
