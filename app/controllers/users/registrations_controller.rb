@@ -10,9 +10,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+     from = SendGrid::Email.new(email: 'aalfredoplz@gmail.com')
+     to = SendGrid::Email.new(email: params["user"][:email])
+     subject = 'Sending with SendGrid is Fun'
+     content = SendGrid::Content.new(type: 'text/plain', value: 'Welcome to APPNOW thank you very much and enjoy our services')
+     mail =SendGrid::Mail.new(from, subject, to, content)
+
+     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+     response = sg.client.mail._('send').post(request_body: mail.to_json)
+     puts response.status_code
+     puts response.body
+     puts response.headers
+   end
 
   # GET /resource/edit
   # def edit
