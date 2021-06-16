@@ -60,3 +60,13 @@ To install the project locally, you must first verify that it contains the follo
 
 # Contact
 Alfredo Peña - aalfredoplz@gmail.com
+
+## To whom it May concern
+
+`Hito3`
+1. Contains facebook authentication in development 
+2. Sendgrid enabled for new registered users
+
+`Main`
+1. Does not contain `Hito3` points
+2. This branch can be considered `Hito4` 
