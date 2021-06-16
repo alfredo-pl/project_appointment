@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
     def after_sign_in_path_for(current_user)
-        if current_user.role == 1
-            dashboard_business_path
+        
+        if current_user.email =="admin@example.com"
+            admin_dashboard_path
+        elsif current_user.role == 1
+            dashboard_business_path 
         else
-            dashboard_user_path
+            dashboard_user_path 
         end
     end
 
