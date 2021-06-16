@@ -27,6 +27,10 @@ gem 'devise'
 gem 'activeadmin'
 gem "chartkick"
 gem 'sendgrid-ruby'
+gem 'omniauth-facebook'
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem 'dotenv-rails', groups: [:development, :test]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
