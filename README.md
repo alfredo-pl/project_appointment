@@ -4,7 +4,6 @@
 
 ***[wwww.appsnow.club](http://www.appsnow.club/)***
 
-***[Heroku Appnow](https://rocky-inlet-08932.herokuapp.com/)***
 # About the project
 This project was carried out in order to schedule an appointment quickly and easily, making it easier for people to take an hour in the associated service they request.
 * Easy registration
