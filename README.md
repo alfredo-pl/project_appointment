@@ -2,7 +2,6 @@
 
 **Table of Contents**
 
-***[wwww.appsnow.club](http://www.appsnow.club/)***
 
 # About the project
 This project was carried out in order to schedule an appointment quickly and easily, making it easier for people to take an hour in the associated service they request.
